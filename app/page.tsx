@@ -1,5 +1,3 @@
 export default function Home() {
-  return (
-    <div>NobleWave</div>
-  );
+  return <div>NobleWave</div>;
 }
