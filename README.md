@@ -1,1 +1,1 @@
-# noble-wave-frontend
+# NobleWave
