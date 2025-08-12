@@ -23,7 +23,7 @@ const products: { title: string; href: string; description: string }[] = [
 
 export const HeaderLinks = () => {
   return (
-    <NavigationMenu viewport={false}>
+    <NavigationMenu viewport={false} className="hidden sm:block">
       <NavigationMenuList className="gap-6">
         <NavigationMenuItem>
           <NavigationMenuLink
