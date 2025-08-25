@@ -7,9 +7,9 @@ import { Badge } from '../ui/badge';
 
 export const HomeMainCard = () => {
   return (
-    <Card className="bg-muted relative h-[960px] w-full overflow-hidden rounded-4xl py-2 shadow-none sm:py-4">
+    <Card className="bg-muted relative min-h-[960px] w-full overflow-hidden rounded-4xl py-2 shadow-none sm:py-4">
       <Image
-        className="bottom absolute bottom-10 z-10 h-full w-full object-cover"
+        className="absolute z-10 h-full w-full object-cover"
         src="/home-main-bg.png"
         alt="home-main"
         quality={100}
@@ -25,8 +25,8 @@ export const HomeMainCard = () => {
           <Card className="bg-background/10 rounded-3xl py-3 backdrop-blur-md sm:w-1/2 xl:w-1/3">
             <CardContent>
               <p className="text-white">
-                SmartEyes V1 Wayfarer — стильные умные очки, которые станут
-                вашим незаменимым спутником в путешествиях, прогулках и
+                <b>SmartEyes V1 Wayfarer</b> — стильные умные очки, которые
+                станут вашим незаменимым спутником в путешествиях, прогулках и
                 повседневной жизни.
               </p>
             </CardContent>
