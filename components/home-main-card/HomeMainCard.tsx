@@ -7,7 +7,7 @@ import { Badge } from '../ui/badge';
 
 export const HomeMainCard = () => {
   return (
-    <Card className="bg-muted relative min-h-[960px] w-full overflow-hidden rounded-4xl py-2 shadow-none sm:py-4">
+    <Card className="bg-muted relative h-[960px] w-full overflow-hidden rounded-4xl py-2 shadow-none sm:py-4">
       <Image
         className="absolute z-10 h-full w-full object-cover"
         src="/home-main-bg.png"
