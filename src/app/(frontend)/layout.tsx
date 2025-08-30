@@ -2,8 +2,10 @@ import { Metadata } from 'next';
 import React from 'react';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
-import { Header } from '@/components/header/Header';
 import { Footer } from '@/components/footer/Footer';
+import { Header } from '@/components/header/Header';
+import { getPayload } from 'payload';
+import config from '@payload-config';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -20,18 +22,24 @@ export const metadata: Metadata = {
   title: 'Payload Blank Template',
 };
 
+const payload = await getPayload({ config });
+const footers = await payload.find({
+  collection: 'footer',
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ru">
       <body
         className={`${geistSans.variable} ${geistMono.variable} relative antialiased`}
       >
+        <Header />
         <main>{children}</main>
-        <Footer />
+        <Footer footer={footers.docs[0]} />
       </body>
     </html>
   );
