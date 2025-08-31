@@ -1,7 +1,7 @@
 import { Field } from 'payload';
 
 export const iconField: Field = {
-  name: 'color',
+  name: 'icon',
   type: 'text',
   required: true,
   admin: {

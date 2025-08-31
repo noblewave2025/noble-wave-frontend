@@ -13,6 +13,10 @@ export const Products: CollectionConfig = {
       required: true,
     },
     {
+      name: 'subtitle',
+      type: 'text',
+    },
+    {
       name: 'description',
       type: 'richText',
       required: true,

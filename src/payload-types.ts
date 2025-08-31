@@ -81,19 +81,11 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     products: ProductsSelect<false> | ProductsSelect<true>;
-    'main-page-products':
-      | MainPageProductsSelect<false>
-      | MainPageProductsSelect<true>;
+    'main-page-products': MainPageProductsSelect<false> | MainPageProductsSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
-    'payload-locked-documents':
-      | PayloadLockedDocumentsSelect<false>
-      | PayloadLockedDocumentsSelect<true>;
-    'payload-preferences':
-      | PayloadPreferencesSelect<false>
-      | PayloadPreferencesSelect<true>;
-    'payload-migrations':
-      | PayloadMigrationsSelect<false>
-      | PayloadMigrationsSelect<true>;
+    'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
+    'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
+    'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
   };
   db: {
     defaultIDType: string;
@@ -177,6 +169,7 @@ export interface Media {
 export interface Product {
   id: string;
   title: string;
+  subtitle?: string | null;
   description: {
     root: {
       type: string;
@@ -194,7 +187,7 @@ export interface Product {
   };
   badges?:
     | {
-        color: string;
+        icon: string;
         title?: string | null;
         description?: string | null;
         id?: string | null;
@@ -345,11 +338,12 @@ export interface MediaSelect<T extends boolean = true> {
  */
 export interface ProductsSelect<T extends boolean = true> {
   title?: T;
+  subtitle?: T;
   description?: T;
   badges?:
     | T
     | {
-        color?: T;
+        icon?: T;
         title?: T;
         description?: T;
         id?: T;
@@ -421,6 +415,7 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 export interface Auth {
   [k: string]: unknown;
 }
+
 
 declare module 'payload' {
   export interface GeneratedTypes extends Config {}
