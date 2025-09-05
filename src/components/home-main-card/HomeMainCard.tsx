@@ -17,6 +17,7 @@ import {
   PayloadLexicalReactRenderer,
   PayloadLexicalReactRendererContent,
 } from '@atelier-disko/payload-lexical-react-renderer';
+import { LucideIcon } from '../lucide-icon/LucideIcon';
 
 interface IHomeMainCardProps {
   mainPageProducts: MainPageProduct[];
@@ -71,15 +72,18 @@ export const HomeMainCard: React.FC<IHomeMainCardProps> = ({
                     <CardContent className="flex h-full flex-col gap-4 px-3 sm:flex-row sm:items-center">
                       <div className="grid flex-1 grid-cols-2 flex-wrap gap-1 sm:flex">
                         {(mainPageProduct.product as Product).badges?.map(
-                          (badge, index) => (
-                            <Badge
-                              key={index}
-                              variant="outline"
-                              className="w-full py-2 whitespace-normal sm:w-auto"
-                            >
-                              {badge.title}
-                            </Badge>
-                          ),
+                          (badge, index) => {
+                            return (
+                              <Badge
+                                key={index}
+                                variant="outline"
+                                className="w-full py-2 whitespace-normal sm:w-auto"
+                              >
+                                <LucideIcon iconName={badge.icon} />
+                                {badge.title}
+                              </Badge>
+                            );
+                          },
                         )}
                       </div>
                       <Button size="lg">

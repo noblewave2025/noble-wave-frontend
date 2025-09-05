@@ -1,6 +1,6 @@
 'use client';
 
-import { CheckCircle, ChevronsUpDown, icons, LucideIcon } from 'lucide-react';
+import { CheckCircle, ChevronsUpDown } from 'lucide-react';
 import { useField } from '@payloadcms/ui';
 import { TextFieldClientComponent } from 'payload';
 import {

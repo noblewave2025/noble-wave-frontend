@@ -1,8 +1,18 @@
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { DotPattern } from '../magicui/dot-pattern';
+import { AboutUs } from '@/payload-types';
+import { FC } from 'react';
+import {
+  PayloadLexicalReactRenderer,
+  PayloadLexicalReactRendererContent,
+} from '@atelier-disko/payload-lexical-react-renderer';
 
-export const HomeInfoCard = () => {
+interface IHomeInfoCardProps {
+  aboutUs: AboutUs;
+}
+
+export const HomeInfoCard: FC<IHomeInfoCardProps> = ({ aboutUs }) => {
   return (
     <Card className="relative w-full rounded-4xl py-2 shadow-none sm:py-4">
       <CardContent className="z-20 flex h-fit flex-col items-center justify-center gap-12 px-2 sm:px-4">
@@ -20,17 +30,17 @@ export const HomeInfoCard = () => {
             NobleWave
           </p>
         </div>
-        <div className="flex flex-col gap-3 md:flex-row">
+        <div className="flex w-full flex-col gap-3 md:flex-row">
           <Card className="bg-background/20 flex-1 rounded-3xl backdrop-blur-sm">
             <CardHeader>
               <CardTitle className="text-xl">О нас</CardTitle>
             </CardHeader>
             <CardContent>
-              Мы – команда энтузиастов, объединённых общей целью – создавать
-              инновационные умные устройства и электротранспорт для современного
-              городского пользователя. Наша миссия – улучшить качество жизни в
-              городах, предлагая передовые решения, которые делают повседневную
-              жизнь более комфортной, безопасной и экологичной.
+              <article className="prose prose-invert w-full">
+                <PayloadLexicalReactRenderer
+                  content={aboutUs.about as PayloadLexicalReactRendererContent}
+                />
+              </article>
             </CardContent>
           </Card>
           <Card className="bg-background/20 flex-1 rounded-3xl backdrop-blur-sm">
@@ -38,12 +48,13 @@ export const HomeInfoCard = () => {
               <CardTitle className="text-xl">Кто мы?</CardTitle>
             </CardHeader>
             <CardContent>
-              <b>NobleWave</b> – это синергия высоких технологий, современного
-              дизайна и стремления к устойчивому развитию. Мы специализируемся
-              на разработке и производстве умных устройств и электротранспорта,
-              которые соответствуют самым высоким стандартам качества и
-              безопасности. Наши продукты предназначены для тех, кто ценит
-              инновации, стиль и заботу об окружающей среде{' '}
+              <article className="prose prose-invert w-full">
+                <PayloadLexicalReactRenderer
+                  content={
+                    aboutUs['who-us'] as PayloadLexicalReactRendererContent
+                  }
+                />
+              </article>
             </CardContent>
           </Card>
         </div>
