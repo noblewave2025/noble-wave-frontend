@@ -36,7 +36,7 @@ export const HomeInfoCard: FC<IHomeInfoCardProps> = ({ aboutUs }) => {
               <CardTitle className="text-xl">О нас</CardTitle>
             </CardHeader>
             <CardContent>
-              <article className="prose prose-invert w-full">
+              <article className="prose prose-invert max-w-full">
                 <PayloadLexicalReactRenderer
                   content={aboutUs.about as PayloadLexicalReactRendererContent}
                 />
@@ -48,7 +48,7 @@ export const HomeInfoCard: FC<IHomeInfoCardProps> = ({ aboutUs }) => {
               <CardTitle className="text-xl">Кто мы?</CardTitle>
             </CardHeader>
             <CardContent>
-              <article className="prose prose-invert w-full">
+              <article className="prose prose-invert max-w-full">
                 <PayloadLexicalReactRenderer
                   content={
                     aboutUs['who-us'] as PayloadLexicalReactRendererContent

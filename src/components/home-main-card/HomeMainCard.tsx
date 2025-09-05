@@ -58,7 +58,7 @@ export const HomeMainCard: React.FC<IHomeMainCardProps> = ({
                 <div className="flex flex-col gap-2">
                   <Card className="bg-background/10 rounded-3xl py-3 backdrop-blur-md sm:w-1/2 xl:w-1/3">
                     <CardContent className="text-white">
-                      <article className="prose prose-invert">
+                      <article className="prose prose-invert max-w-full">
                         <PayloadLexicalReactRenderer
                           content={
                             (mainPageProduct.product as Product)
