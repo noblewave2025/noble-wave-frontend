@@ -17,6 +17,11 @@ export const Products: CollectionConfig = {
       type: 'text',
     },
     {
+      name: 'header-description',
+      type: 'text',
+      required: true,
+    },
+    {
       name: 'description',
       type: 'richText',
       required: true,
@@ -33,6 +38,17 @@ export const Products: CollectionConfig = {
         {
           name: 'description',
           type: 'text',
+        },
+      ],
+    },
+    {
+      name: 'photos',
+      type: 'array',
+      fields: [
+        {
+          name: 'photo',
+          type: 'upload',
+          relationTo: 'media',
         },
       ],
     },

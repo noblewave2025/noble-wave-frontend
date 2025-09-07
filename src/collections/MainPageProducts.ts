@@ -10,11 +10,18 @@ export const MainPageProducts: CollectionConfig = {
       name: 'product',
       type: 'relationship',
       relationTo: 'products',
+      required: true,
+    },
+    {
+      name: 'descritpion',
+      type: 'richText',
+      required: false,
     },
     {
       name: 'background-image',
       type: 'upload',
       relationTo: 'media',
+      required: true,
     },
   ],
 };

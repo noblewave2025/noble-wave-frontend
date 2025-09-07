@@ -18,7 +18,7 @@ import {
   PayloadLexicalReactRendererContent,
 } from '@atelier-disko/payload-lexical-react-renderer';
 import { LucideIcon } from '../lucide-icon/LucideIcon';
-import Autoplay from "embla-carousel-autoplay";
+import Autoplay from 'embla-carousel-autoplay';
 
 interface IHomeMainCardProps {
   mainPageProducts: MainPageProduct[];
@@ -28,11 +28,13 @@ export const HomeMainCard: React.FC<IHomeMainCardProps> = ({
   mainPageProducts,
 }) => {
   return (
-    <Carousel plugins={[
-      Autoplay({
-        delay: 5000,
-      })
-    ]}>
+    <Carousel
+      plugins={[
+        Autoplay({
+          delay: 5000,
+        }),
+      ]}
+    >
       <CarouselContent className="relative">
         {mainPageProducts.map((mainPageProduct) => (
           <CarouselItem key={mainPageProduct.id}>
@@ -66,8 +68,9 @@ export const HomeMainCard: React.FC<IHomeMainCardProps> = ({
                       <article className="prose prose-invert max-w-full">
                         <PayloadLexicalReactRenderer
                           content={
-                            (mainPageProduct.product as Product)
-                              .description as PayloadLexicalReactRendererContent
+                            (mainPageProduct.descritpion ??
+                              (mainPageProduct.product as Product)
+                                .description) as PayloadLexicalReactRendererContent
                           }
                         />
                       </article>

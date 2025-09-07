@@ -82,12 +82,20 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     products: ProductsSelect<false> | ProductsSelect<true>;
-    'main-page-products': MainPageProductsSelect<false> | MainPageProductsSelect<true>;
+    'main-page-products':
+      | MainPageProductsSelect<false>
+      | MainPageProductsSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
     'about-us': AboutUsSelect<false> | AboutUsSelect<true>;
-    'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
-    'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
-    'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
+    'payload-locked-documents':
+      | PayloadLockedDocumentsSelect<false>
+      | PayloadLockedDocumentsSelect<true>;
+    'payload-preferences':
+      | PayloadPreferencesSelect<false>
+      | PayloadPreferencesSelect<true>;
+    'payload-migrations':
+      | PayloadMigrationsSelect<false>
+      | PayloadMigrationsSelect<true>;
   };
   db: {
     defaultIDType: string;
@@ -172,6 +180,7 @@ export interface Product {
   id: string;
   title: string;
   subtitle?: string | null;
+  'header-description': string;
   description: {
     root: {
       type: string;
@@ -195,6 +204,12 @@ export interface Product {
         id?: string | null;
       }[]
     | null;
+  photos?:
+    | {
+        photo?: (string | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -204,8 +219,23 @@ export interface Product {
  */
 export interface MainPageProduct {
   id: string;
-  product?: (string | null) | Product;
-  'background-image'?: (string | null) | Media;
+  product: string | Product;
+  descritpion?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  'background-image': string | Media;
   updatedAt: string;
   createdAt: string;
 }
@@ -384,6 +414,7 @@ export interface MediaSelect<T extends boolean = true> {
 export interface ProductsSelect<T extends boolean = true> {
   title?: T;
   subtitle?: T;
+  'header-description'?: T;
   description?: T;
   badges?:
     | T
@@ -391,6 +422,12 @@ export interface ProductsSelect<T extends boolean = true> {
         icon?: T;
         title?: T;
         description?: T;
+        id?: T;
+      };
+  photos?:
+    | T
+    | {
+        photo?: T;
         id?: T;
       };
   updatedAt?: T;
@@ -402,6 +439,7 @@ export interface ProductsSelect<T extends boolean = true> {
  */
 export interface MainPageProductsSelect<T extends boolean = true> {
   product?: T;
+  descritpion?: T;
   'background-image'?: T;
   updatedAt?: T;
   createdAt?: T;

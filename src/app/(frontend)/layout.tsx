@@ -23,8 +23,14 @@ export const metadata: Metadata = {
 };
 
 const payload = await getPayload({ config });
+
 const footers = await payload.find({
   collection: 'footer',
+});
+
+const products = await payload.find({
+  collection: 'products',
+  limit: 4,
 });
 
 export default function RootLayout({
@@ -37,7 +43,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} relative antialiased`}
       >
-        <Header />
+        <Header products={products.docs} />
         <main>{children}</main>
         <Footer footer={footers.docs[0]} />
       </body>
