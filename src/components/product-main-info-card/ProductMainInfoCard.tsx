@@ -7,6 +7,7 @@ import {
 } from '@atelier-disko/payload-lexical-react-renderer';
 import { Button } from '../ui/button';
 import { GridBeams } from '../magicui/grid-beams';
+import { Separator } from '../ui/separator';
 
 interface IProductMainInfoCardProps {
   product: Product;
@@ -19,26 +20,29 @@ export const ProductMainInfoCard: FC<IProductMainInfoCardProps> = ({
     <GridBeams
       gridSize={0}
       gridColor="rgba(150, 150, 150, 0.5)"
-      rayCount={30}
-      rayOpacity={0.35}
-      raySpeed={3}
-      rayLength="80vh"
-      gridFadeStart={5}
+      rayCount={40}
+      rayOpacity={0.45}
+      raySpeed={2}
+      rayLength="200vh"
+      gridFadeStart={0}
       backgroundColor="rgb(0, 0, 0)"
-      gridFadeEnd={200}
-      className="w-full overflow-hidden rounded-4xl border px-2 pt-2 pb-6 sm:p-2"
+      gridFadeEnd={100}
+      className="w-full overflow-hidden rounded-4xl border pt-2 pb-6 sm:p-2"
     >
-      <div className="flex flex-col gap-6 lg:flex-row lg:gap-10">
+      <div className="flex flex-col items-center gap-6 pt-16 md:pt-21 lg:flex-row lg:items-stretch">
         {product?.photos && (
           <ProductImagesCarousel
             images={product.photos.map((photo) => photo.photo as Media)}
           />
         )}
-        <div className="flex flex-1 flex-col justify-between gap-4 py-2 pr-2">
+        <Separator className="!w-2/3 lg:hidden" />
+        <div className="flex flex-1 flex-col justify-between gap-4 p-4 pt-0 lg:pt-4">
           <div className="flex flex-col gap-4">
             <div>
-              <p className="text-7xl font-black break-all">{product.title}</p>
-              <p className="text-muted-foreground font-mono text-5xl font-semibold">
+              <p className="text-6xl font-black break-all md:text-7xl">
+                {product.title}
+              </p>
+              <p className="text-muted-foreground font-mono text-4xl font-semibold md:text-5xl">
                 {product.subtitle}
               </p>
             </div>

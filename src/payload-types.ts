@@ -82,12 +82,20 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     products: ProductsSelect<false> | ProductsSelect<true>;
-    'main-page-products': MainPageProductsSelect<false> | MainPageProductsSelect<true>;
+    'main-page-products':
+      | MainPageProductsSelect<false>
+      | MainPageProductsSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
     'about-us': AboutUsSelect<false> | AboutUsSelect<true>;
-    'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
-    'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
-    'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
+    'payload-locked-documents':
+      | PayloadLockedDocumentsSelect<false>
+      | PayloadLockedDocumentsSelect<true>;
+    'payload-preferences':
+      | PayloadPreferencesSelect<false>
+      | PayloadPreferencesSelect<true>;
+    'payload-migrations':
+      | PayloadMigrationsSelect<false>
+      | PayloadMigrationsSelect<true>;
   };
   db: {
     defaultIDType: string;
@@ -189,11 +197,21 @@ export interface Product {
     [k: string]: unknown;
   };
   price: number;
+  specs: {
+    title: string;
+    values: {
+      title: string;
+      value: string;
+      id?: string | null;
+    }[];
+    id?: string | null;
+  }[];
   badges?:
     | {
         icon: string;
         title?: string | null;
         description?: string | null;
+        image?: (string | null) | Media;
         id?: string | null;
       }[]
     | null;
@@ -410,12 +428,26 @@ export interface ProductsSelect<T extends boolean = true> {
   'header-description'?: T;
   description?: T;
   price?: T;
+  specs?:
+    | T
+    | {
+        title?: T;
+        values?:
+          | T
+          | {
+              title?: T;
+              value?: T;
+              id?: T;
+            };
+        id?: T;
+      };
   badges?:
     | T
     | {
         icon?: T;
         title?: T;
         description?: T;
+        image?: T;
         id?: T;
       };
   photos?:
@@ -502,7 +534,6 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 export interface Auth {
   [k: string]: unknown;
 }
-
 
 declare module 'payload' {
   export interface GeneratedTypes extends Config {}

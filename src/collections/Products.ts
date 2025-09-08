@@ -32,6 +32,35 @@ export const Products: CollectionConfig = {
       required: true,
     },
     {
+      name: 'specs',
+      type: 'array',
+      required: true,
+      fields: [
+        {
+          name: 'title',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'values',
+          type: 'array',
+          required: true,
+          fields: [
+            {
+              name: 'title',
+              type: 'text',
+              required: true,
+            },
+            {
+              name: 'value',
+              type: 'text',
+              required: true,
+            },
+          ],
+        },
+      ],
+    },
+    {
       name: 'badges',
       type: 'array',
       fields: [
@@ -43,6 +72,11 @@ export const Products: CollectionConfig = {
         {
           name: 'description',
           type: 'text',
+        },
+        {
+          name: 'image',
+          type: 'upload',
+          relationTo: 'media',
         },
       ],
     },
