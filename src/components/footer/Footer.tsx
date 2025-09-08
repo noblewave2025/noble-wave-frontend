@@ -10,7 +10,7 @@ interface IFooterProps {
 
 export const Footer: React.FC<IFooterProps> = ({ footer }) => {
   return (
-    <div className="flex h-fit flex-col items-center justify-center gap-4 rounded-4xl border p-4">
+    <div className="mt-6 flex h-fit flex-col items-center justify-center gap-4 rounded-4xl border p-4 sm:mx-2">
       <div className="flex w-full flex-1 flex-col gap-2 md:flex-row">
         {footer.icons?.map((icon) => (
           <div

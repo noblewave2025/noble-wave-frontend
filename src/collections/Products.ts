@@ -27,6 +27,11 @@ export const Products: CollectionConfig = {
       required: true,
     },
     {
+      name: 'price',
+      type: 'number',
+      required: true,
+    },
+    {
       name: 'badges',
       type: 'array',
       fields: [
