@@ -19,6 +19,7 @@ import {
 } from '@atelier-disko/payload-lexical-react-renderer';
 import { LucideIcon } from '../lucide-icon/LucideIcon';
 import Autoplay from 'embla-carousel-autoplay';
+import Link from 'next/link';
 
 interface IHomeMainCardProps {
   mainPageProducts: MainPageProduct[];
@@ -94,9 +95,14 @@ export const HomeMainCard: React.FC<IHomeMainCardProps> = ({
                           },
                         )}
                       </div>
-                      <Button size="lg">
-                        Подробнее <ChevronRight />
-                      </Button>
+                      <Link
+                        className="w-full sm:w-auto"
+                        href={`/product/${(mainPageProduct.product as Product).id}`}
+                      >
+                        <Button size="lg" className="w-full sm:w-auto">
+                          Подробнее <ChevronRight />
+                        </Button>
+                      </Link>
                     </CardContent>
                   </Card>
                 </div>
