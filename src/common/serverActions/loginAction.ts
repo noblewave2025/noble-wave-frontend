@@ -15,5 +15,5 @@ export const loginAction = async (formData: {
     },
   });
 
-  redirect('/dashboard');
+  redirect('/');
 };

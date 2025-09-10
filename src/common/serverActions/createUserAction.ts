@@ -2,7 +2,7 @@
 
 import { getPayload } from 'payload';
 import config from '@payload-config';
-import { redirect } from 'next/navigation';
+import { loginAction } from '@/common/serverActions/loginAction';
 
 export const createUserAction = async (formData: {
   email: string;
@@ -18,12 +18,5 @@ export const createUserAction = async (formData: {
     },
   });
   console.log(user);
-  await payload.login({
-    collection: 'users',
-    data: {
-      email: formData.email,
-      password: formData.password,
-    },
-  });
-  redirect('/');
+  await loginAction(formData);
 };
