@@ -1,13 +1,16 @@
 import { CollectionConfig } from 'payload';
 import { authenticated } from '@/common/accessControls/authenticated';
+import { OrderStatusOptions } from '@/types/order';
+import { adminRequired } from '@/common/accessControls/adminRequired';
+import { ContactOptions } from '@/types/contacts';
 
 export const Orders: CollectionConfig = {
   slug: 'orders',
   access: {
     create: authenticated,
-    delete: authenticated,
+    delete: adminRequired,
     read: authenticated,
-    update: authenticated,
+    update: adminRequired,
   },
   defaultPopulate: {
     user: true,
@@ -28,8 +31,23 @@ export const Orders: CollectionConfig = {
     },
     {
       name: 'status',
-      type: 'upload',
-      relationTo: 'media',
+      type: 'select',
+      hasMany: false,
+      options: OrderStatusOptions,
+      defaultValue: 'registration',
+      required: true,
+    },
+    {
+      name: 'contact',
+      type: 'select',
+      hasMany: false,
+      options: ContactOptions,
+      defaultValue: 'tg',
+      required: true,
+    },
+    {
+      name: 'address',
+      type: 'text',
       required: true,
     },
   ],

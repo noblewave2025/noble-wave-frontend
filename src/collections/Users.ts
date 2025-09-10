@@ -1,6 +1,6 @@
 import type { CollectionConfig } from 'payload';
-import { adminRequired } from '@/common/accessControls/adminRequired';
 import { publicAccess } from '@/common/accessControls/publicAccess';
+import { RolesOptions } from '@/types/roles';
 
 export const Users: CollectionConfig = {
   slug: 'users',
@@ -25,10 +25,7 @@ export const Users: CollectionConfig = {
       name: 'role',
       type: 'select',
       hasMany: false,
-      options: [
-        { label: 'Admin', value: 'admin' },
-        { label: 'User', value: 'user' },
-      ],
+      options: RolesOptions,
       defaultValue: 'user',
       required: true,
     },
