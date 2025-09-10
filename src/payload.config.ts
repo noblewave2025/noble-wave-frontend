@@ -12,6 +12,7 @@ import { Products } from './collections/Products';
 import { MainPageProducts } from './collections/MainPageProducts';
 import { Footer } from './collections/Footer';
 import { AboutUs } from './collections/AboutUs';
+import { FAQ } from './collections/FAQ';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -23,7 +24,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Products, MainPageProducts, Footer, AboutUs],
+  collections: [Users, Media, Products, MainPageProducts, Footer, AboutUs, FAQ],
   editor: lexicalEditor({}),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
