@@ -1,7 +1,7 @@
 import { CollectionConfig } from 'payload';
-import { authenticated } from '@/common/accessControls/authenticated';
+import { authenticated } from '@/accessControls/authenticated';
 import { OrderStatusOptions } from '@/types/order';
-import { adminRequired } from '@/common/accessControls/adminRequired';
+import { adminRequired } from '@/accessControls/adminRequired';
 import { ContactOptions } from '@/types/contacts';
 
 export const Orders: CollectionConfig = {
