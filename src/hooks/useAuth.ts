@@ -1,6 +1,6 @@
 'use client';
 
-import { useFetch } from '@/common/hooks/useFetch';
+import { useFetch } from '@/hooks/useFetch';
 
 type User = {
   id: string;
@@ -9,13 +9,16 @@ type User = {
 };
 
 export function useAuth() {
-  const { data, loading, error } = useFetch<{ user: User }>('/api/users/me');
+  const { data, loading, makeRequest } = useFetch<{ user: User }>();
+
+  makeRequest({
+    url: '/api/users/me',
+  });
 
   return {
     user: data?.user,
     role: data?.user?.role,
     loading,
-    error,
     isAuthenticated: Boolean(data?.user),
   };
 }

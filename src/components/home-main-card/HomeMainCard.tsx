@@ -29,7 +29,13 @@ export const HomeMainCard: React.FC<IHomeMainCardProps> = ({
   mainPageProducts,
 }) => {
   return (
-    <Carousel>
+    <Carousel
+      plugins={[
+        Autoplay({
+          delay: 5000,
+        }),
+      ]}
+    >
       <CarouselContent className="relative">
         {mainPageProducts.map((mainPageProduct) => (
           <CarouselItem key={mainPageProduct.id}>
