@@ -74,6 +74,7 @@ export interface Config {
     footer: Footer;
     'about-us': AboutUs;
     faq: Faq;
+    support: Support;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -89,6 +90,7 @@ export interface Config {
     footer: FooterSelect<false> | FooterSelect<true>;
     'about-us': AboutUsSelect<false> | AboutUsSelect<true>;
     faq: FaqSelect<false> | FaqSelect<true>;
+    support: SupportSelect<false> | SupportSelect<true>;
     'payload-locked-documents':
       | PayloadLockedDocumentsSelect<false>
       | PayloadLockedDocumentsSelect<true>;
@@ -335,6 +337,18 @@ export interface Faq {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "support".
+ */
+export interface Support {
+  id: string;
+  fio: string;
+  email: string;
+  message: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -367,6 +381,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'faq';
         value: string | Faq;
+      } | null)
+    | ({
+        relationTo: 'support';
+        value: string | Support;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -535,6 +553,17 @@ export interface AboutUsSelect<T extends boolean = true> {
 export interface FaqSelect<T extends boolean = true> {
   question?: T;
   answer?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "support_select".
+ */
+export interface SupportSelect<T extends boolean = true> {
+  fio?: T;
+  email?: T;
+  message?: T;
   updatedAt?: T;
   createdAt?: T;
 }
