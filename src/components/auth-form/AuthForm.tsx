@@ -32,7 +32,6 @@ export const AuthForm: FC<IAuthFormProps> = ({ isRegister = false }) => {
     },
   });
 
-
   const onSubmit = async (formData: z.infer<typeof AuthSchema>) => {
     try {
       if (isRegister) {
@@ -43,15 +42,21 @@ export const AuthForm: FC<IAuthFormProps> = ({ isRegister = false }) => {
     } catch {
       toast.error('Произошла ошибка. Повторите позже...');
     }
-  }
+  };
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-8 rounded-4xl border px-2 pt-22 pb-10 md:px-6">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="flex flex-col gap-8 rounded-4xl border px-2 pt-22 pb-10 md:px-6"
+      >
         <div className="flex flex-col gap-2">
-          <p className="text-4xl md:text-7xl font-black">{isRegister ? 'Регистрация' : 'Вход в аккаунт'}</p>
+          <p className="text-4xl font-black md:text-7xl">
+            {isRegister ? 'Регистрация' : 'Вход в аккаунт'}
+          </p>
           <p className="text-muted-foreground font-semibold">
-            Введите данные для {isRegister ? 'создания аккаунта' : 'входа в аккаунт'}
+            Введите данные для{' '}
+            {isRegister ? 'создания аккаунта' : 'входа в аккаунт'}
           </p>
         </div>
         <FormField
@@ -80,7 +85,9 @@ export const AuthForm: FC<IAuthFormProps> = ({ isRegister = false }) => {
             </FormItem>
           )}
         />
-        <Button type="submit">{isRegister ? 'Создать акканут' : 'Войти'}</Button>
+        <Button type="submit">
+          {isRegister ? 'Создать акканут' : 'Войти'}
+        </Button>
       </form>
     </Form>
   );
