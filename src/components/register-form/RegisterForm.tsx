@@ -11,13 +11,13 @@ import {
 } from '@/components/ui/form';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { loginSchema } from '@/common/schemas/LoginSchema';
+import { AuthSchema } from '@/schemas/auth-schema';
 import { z } from 'zod';
-import { createUserAction } from '@/common/serverActions/createUserAction';
+import { createUserAction } from '@/server-actions/createUserAction';
 
 export const RegisterForm = () => {
-  const form = useForm<z.infer<typeof loginSchema>>({
-    resolver: zodResolver(loginSchema),
+  const form = useForm<z.infer<typeof AuthSchema>>({
+    resolver: zodResolver(AuthSchema),
     defaultValues: {
       email: '',
       password: '',

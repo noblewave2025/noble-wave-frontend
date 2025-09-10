@@ -2,7 +2,7 @@
 
 import { useForm } from 'react-hook-form';
 import { Meteors } from '../magicui/meteors';
-import { SupportSchema } from './zod/support-schema';
+import { SupportSchema } from '@/schemas/support-schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import {

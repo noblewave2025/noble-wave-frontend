@@ -2,7 +2,7 @@
 
 import { getPayload } from 'payload';
 import config from '@payload-config';
-import { loginAction } from '@/common/serverActions/loginAction';
+import { loginAction } from '@/server-actions/loginAction';
 
 export const createUserAction = async (formData: {
   email: string;
