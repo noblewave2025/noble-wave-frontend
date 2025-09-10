@@ -5,6 +5,24 @@ export const Users: CollectionConfig = {
   admin: {
     useAsTitle: 'email',
   },
-  auth: true,
-  fields: [],
+  auth: {
+    cookies: {
+      domain: '/',
+      secure: false,
+      sameSite: 'Lax',
+    },
+  },
+  fields: [
+    {
+      name: 'role',
+      type: 'select',
+      hasMany: false,
+      options: [
+        { label: 'Admin', value: 'admin' },
+        { label: 'User', value: 'user' },
+      ],
+      defaultValue: 'user',
+      required: true,
+    },
+  ],
 };

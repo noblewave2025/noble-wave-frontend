@@ -43,9 +43,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} relative antialiased`}
       >
-        <Header products={products.docs} />
+        {/*<Header products={products.docs} />*/}
         <main>{children}</main>
-        <Footer footer={footers.docs[0]} />
+        {/*<Footer footer={footers.docs[0]} />*/}
       </body>
     </html>
   );
