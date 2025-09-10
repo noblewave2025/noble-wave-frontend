@@ -17,6 +17,5 @@ export const createUserAction = async (formData: {
       role: 'user',
     },
   });
-  console.log(user);
   await loginAction(formData);
 };

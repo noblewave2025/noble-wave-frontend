@@ -1,4 +1,6 @@
 import type { CollectionConfig } from 'payload';
+import { adminRequired } from '@/common/accessControls/adminRequired';
+import { publicAccess } from '@/common/accessControls/publicAccess';
 
 export const Users: CollectionConfig = {
   slug: 'users',
@@ -8,9 +10,15 @@ export const Users: CollectionConfig = {
   auth: {
     cookies: {
       domain: '/',
-      secure: false,
+      secure: true,
       sameSite: 'Lax',
     },
+  },
+  access: {
+    create: publicAccess,
+    delete: publicAccess,
+    read: publicAccess,
+    update: publicAccess,
   },
   fields: [
     {

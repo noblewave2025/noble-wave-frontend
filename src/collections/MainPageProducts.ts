@@ -1,5 +1,4 @@
 import { CollectionConfig } from 'payload';
-import { authenticated } from '@/common/accessControls/authenticated';
 import { adminRequired } from '@/common/accessControls/adminRequired';
 import { publicAccess } from '@/common/accessControls/publicAccess';
 
