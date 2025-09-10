@@ -9,7 +9,7 @@ export const createUserAction = async (formData: {
   password: string;
 }) => {
   const payload = await getPayload({ config });
-  const user = await payload.create({
+  await payload.create({
     collection: 'users',
     data: {
       email: formData.email,

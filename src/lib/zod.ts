@@ -1,4 +1,4 @@
-import { LengthString, RequiredString } from '@/types/zod';
+import { LengthString, RequiredString } from '@/consts/zod';
 
 export const getMinMaxMessage = (
   fieldName: string,

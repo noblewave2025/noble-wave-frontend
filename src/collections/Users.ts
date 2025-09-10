@@ -1,5 +1,4 @@
 import type { CollectionConfig } from 'payload';
-import { publicAccess } from '@/common/accessControls/publicAccess';
 import { RolesOptions } from '@/types/roles';
 
 export const Users: CollectionConfig = {
@@ -13,12 +12,6 @@ export const Users: CollectionConfig = {
       secure: true,
       sameSite: 'Lax',
     },
-  },
-  access: {
-    create: publicAccess,
-    delete: publicAccess,
-    read: publicAccess,
-    update: publicAccess,
   },
   fields: [
     {

@@ -1,6 +1,6 @@
 import { MESSAGES } from '@/consts/zod';
 import { getMinMaxMessage } from '@/lib/zod';
-import { LengthString, RequiredString } from '@/types/zod';
+import { LengthString, RequiredString } from '@/consts/zod';
 import { z } from 'zod';
 
 export const SupportSchema = z.object({
