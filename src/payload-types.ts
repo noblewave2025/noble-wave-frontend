@@ -73,6 +73,7 @@ export interface Config {
     'main-page-products': MainPageProduct;
     footer: Footer;
     'about-us': AboutUs;
+    faq: Faq;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -87,6 +88,7 @@ export interface Config {
       | MainPageProductsSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
     'about-us': AboutUsSelect<false> | AboutUsSelect<true>;
+    faq: FaqSelect<false> | FaqSelect<true>;
     'payload-locked-documents':
       | PayloadLockedDocumentsSelect<false>
       | PayloadLockedDocumentsSelect<true>;
@@ -307,6 +309,31 @@ export interface AboutUs {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "faq".
+ */
+export interface Faq {
+  id: string;
+  question: string;
+  answer: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -335,6 +362,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'about-us';
         value: string | AboutUs;
+      } | null)
+    | ({
+        relationTo: 'faq';
+        value: string | Faq;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -492,6 +523,16 @@ export interface FooterSelect<T extends boolean = true> {
 export interface AboutUsSelect<T extends boolean = true> {
   about?: T;
   'who-us'?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "faq_select".
+ */
+export interface FaqSelect<T extends boolean = true> {
+  question?: T;
+  answer?: T;
   updatedAt?: T;
   createdAt?: T;
 }
