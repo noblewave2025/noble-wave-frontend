@@ -1,7 +1,6 @@
 import { CollectionConfig } from 'payload';
-import { authenticated } from '@/common/accessControls/authenticated';
-import { adminRequired } from '@/common/accessControls/adminRequired';
-import { publicAccess } from '@/common/accessControls/publicAccess';
+import { adminRequired } from '@/accessControls/adminRequired';
+import { publicAccess } from '@/accessControls/publicAccess';
 
 export const MainPageProducts: CollectionConfig = {
   slug: 'main-page-products',

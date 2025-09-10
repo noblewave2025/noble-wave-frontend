@@ -2,7 +2,7 @@
 
 import { z } from 'zod';
 
-export const loginSchema = z.object({
+export const AuthSchema = z.object({
   email: z.email('Введите корректную почту'),
   password: z
     .string()
