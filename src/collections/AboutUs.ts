@@ -13,5 +13,11 @@ export const AboutUs: CollectionConfig = {
       type: 'richText',
       required: true,
     },
+    {
+      name: 'background-image',
+      type: 'upload',
+      relationTo: 'media',
+      required: true,
+    },
   ],
 };

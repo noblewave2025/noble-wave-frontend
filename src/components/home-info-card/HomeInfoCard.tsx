@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { DotPattern } from '../magicui/dot-pattern';
-import { AboutUs } from '@/payload-types';
+import { AboutUs, Media } from '@/payload-types';
 import { FC } from 'react';
 import {
   PayloadLexicalReactRenderer,
@@ -20,8 +20,8 @@ export const HomeInfoCard: FC<IHomeInfoCardProps> = ({ aboutUs }) => {
           <div className="relative min-h-[370px] w-full flex-1">
             <Image
               className="absolute inset-0 z-20 h-full"
-              src="/icon.svg"
-              alt="home-main"
+              src="/logo.svg"
+              alt="logo"
               quality={100}
               fill
             />
@@ -61,8 +61,8 @@ export const HomeInfoCard: FC<IHomeInfoCardProps> = ({ aboutUs }) => {
       </CardContent>
       <Image
         className="absolute z-10 h-full w-full rounded-4xl object-cover opacity-50"
-        src="/home-info-bg1.png"
-        alt="home-main"
+        src={(aboutUs['background-image'] as Media).url ?? ''}
+        alt={(aboutUs['background-image'] as Media).alt}
         quality={100}
         fill
       />

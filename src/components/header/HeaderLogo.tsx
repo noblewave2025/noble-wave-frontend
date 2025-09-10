@@ -7,7 +7,7 @@ export const HeaderLogo = () => {
       href="/"
       className="absolute left-1/2 -translate-x-1/2 sm:relative sm:left-0 sm:translate-x-0"
     >
-      <Image src="/icon.svg" width="30" height="30" alt="logo" quality={100} />
+      <Image src="/logo.svg" width="30" height="30" alt="logo" quality={100} />
     </Link>
   );
 };
