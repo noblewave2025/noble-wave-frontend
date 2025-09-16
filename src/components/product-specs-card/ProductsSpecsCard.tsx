@@ -8,7 +8,7 @@ interface IProductSpecsCardProps {
 export const ProductSpecsCard: FC<IProductSpecsCardProps> = ({ specs }) => {
   return (
     <div className="flex w-full flex-col gap-6">
-      <p className="text-6xl font-bold">Характеристики</p>
+      <p className="text-4xl font-bold sm:text-6xl">Характеристики</p>
       <div className="grid grid-cols-1 gap-x-4 gap-y-5 px-2 md:grid-cols-2 xl:grid-cols-3 xl:px-4">
         {specs.map((spec) => (
           <div className="flex flex-col gap-2" key={spec.id}>

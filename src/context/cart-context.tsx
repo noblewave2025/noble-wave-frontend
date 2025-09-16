@@ -13,7 +13,7 @@ import {
 interface ICardProps {
   cartState: Product[];
   onAddProduct?: (product: Product) => void;
-  onRemoveProduct?: (id: Product['id']) => void;
+  onRemoveProduct?: (index: number) => void;
 }
 
 const CartContext = createContext<ICardProps>({
@@ -26,17 +26,25 @@ export const CartProvider: FC<PropsWithChildren> = ({ children }) => {
   const [cartState, setCartState] = useState<Product[]>([]);
 
   useEffect(() => {
-    // получение из localStorage и запись в cartState
+    const localStorageCart = localStorage.getItem('cart');
+    if (!localStorageCart) {
+      return;
+    }
+
+    setCartState(JSON.parse(localStorageCart) as Product[]);
   }, []);
 
   const onAddProduct = (product: Product) => {
-    setCartState([...cartState, product]);
-    // тут localStorage
+    const cart = [...cartState, product];
+    setCartState(cart);
+    localStorage.setItem('cart', JSON.stringify(cart));
   };
 
-  const onRemoveProduct = (id: Product['id']) => {
-    setCartState(cartState.filter((product) => product.id !== id));
-    // тут localStorage
+  const onRemoveProduct = (index: number) => {
+    const cart = [...cartState];
+    cart.splice(index, 1);
+    setCartState(cart);
+    localStorage.setItem('cart', JSON.stringify(cart));
   };
 
   const value: ICardProps = {
