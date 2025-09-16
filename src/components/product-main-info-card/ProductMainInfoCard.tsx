@@ -1,3 +1,5 @@
+'use client';
+
 import { Media, Product } from '@/payload-types';
 import { FC } from 'react';
 import { ProductImagesCarousel } from '../product-images-carousel/ProductImagesCrousel';
@@ -8,6 +10,8 @@ import {
 import { Button } from '../ui/button';
 import { GridBeams } from '../magicui/grid-beams';
 import { Separator } from '../ui/separator';
+import { toast } from 'sonner';
+import { useCart } from '@/context/cart-context';
 
 interface IProductMainInfoCardProps {
   product: Product;
@@ -16,6 +20,13 @@ interface IProductMainInfoCardProps {
 export const ProductMainInfoCard: FC<IProductMainInfoCardProps> = ({
   product,
 }) => {
+  const { onAddProduct } = useCart();
+
+  const addProductToCart = () => {
+    toast.success(`Товар "${product.title}" успешно добавлен в корзину!`);
+    onAddProduct!(product);
+  };
+
   return (
     <GridBeams
       gridSize={0}
@@ -56,7 +67,9 @@ export const ProductMainInfoCard: FC<IProductMainInfoCardProps> = ({
           </div>
           <div className="flex flex-col justify-between gap-4 lg:flex-row lg:items-center">
             <p className="text-5xl font-black">{`${product.price}₽`}</p>
-            <Button size="lg">Добавить в корзину</Button>
+            <Button size="lg" onClick={addProductToCart}>
+              Добавить в корзину
+            </Button>
           </div>
         </div>
       </div>

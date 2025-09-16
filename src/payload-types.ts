@@ -84,22 +84,14 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     products: ProductsSelect<false> | ProductsSelect<true>;
-    'main-page-products':
-      | MainPageProductsSelect<false>
-      | MainPageProductsSelect<true>;
+    'main-page-products': MainPageProductsSelect<false> | MainPageProductsSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
     'about-us': AboutUsSelect<false> | AboutUsSelect<true>;
     faq: FaqSelect<false> | FaqSelect<true>;
     support: SupportSelect<false> | SupportSelect<true>;
-    'payload-locked-documents':
-      | PayloadLockedDocumentsSelect<false>
-      | PayloadLockedDocumentsSelect<true>;
-    'payload-preferences':
-      | PayloadPreferencesSelect<false>
-      | PayloadPreferencesSelect<true>;
-    'payload-migrations':
-      | PayloadMigrationsSelect<false>
-      | PayloadMigrationsSelect<true>;
+    'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
+    'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
+    'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
   };
   db: {
     defaultIDType: string;
@@ -307,6 +299,7 @@ export interface AboutUs {
     };
     [k: string]: unknown;
   };
+  'background-image': string | Media;
   updatedAt: string;
   createdAt: string;
 }
@@ -543,6 +536,7 @@ export interface FooterSelect<T extends boolean = true> {
 export interface AboutUsSelect<T extends boolean = true> {
   about?: T;
   'who-us'?: T;
+  'background-image'?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -606,6 +600,7 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 export interface Auth {
   [k: string]: unknown;
 }
+
 
 declare module 'payload' {
   export interface GeneratedTypes extends Config {}

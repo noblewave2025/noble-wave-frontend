@@ -10,7 +10,6 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 import Image from 'next/image';
-import Autoplay from 'embla-carousel-autoplay';
 
 interface IProductImagesCarouselProps {
   images: Media[];
@@ -20,14 +19,7 @@ export const ProductImagesCarousel: FC<IProductImagesCarouselProps> = ({
   images,
 }) => {
   return (
-    <Carousel
-      className="h-full w-full flex-1 overflow-hidden rounded-4xl"
-      plugins={[
-        Autoplay({
-          delay: 5000,
-        }),
-      ]}
-    >
+    <Carousel className="h-full w-full flex-1 overflow-hidden rounded-4xl">
       <CarouselContent>
         {images.map(
           (image) =>
